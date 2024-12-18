@@ -2,8 +2,10 @@ const express = require('express');
 const ytdl = require('ytdl-core');
 const ffmpeg = require('fluent-ffmpeg');
 const ffmpegPath = require('ffmpeg-static');
+const axios = require('axios');
 const url = require('url');
 const path = require('path');
+require('dotenv').config();
 
 ffmpeg.setFfmpegPath(ffmpegPath);
 
@@ -74,7 +76,7 @@ app.get('/download', async (req, res) => {
             }).pipe(res);
         }
     } catch (err) {
-        if (err.code === 'ENOTFOUND') {
+        if (err.response && err.response.status === 410) {
             res.status(410).send('Video not found: The video has been deleted or is no longer accessible');
         } else {
             console.error(err);
@@ -100,7 +102,7 @@ app.get('/info', async (req, res) => {
         const info = await ytdl.getInfo(parsedUrl.href);
         res.json(info.videoDetails);
     } catch (err) {
-        if (err.code === 'ENOTFOUND') {
+        if (err.response && err.response.status === 410) {
             res.status(410).send('Video not found: The video has been deleted or is no longer accessible');
         } else {
             console.error(err);
