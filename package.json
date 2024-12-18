@@ -1,0 +1,17 @@
+{
+  "name": "youtube-downloader",
+  "version": "1.0.0",
+  "description": "A simple Node.js YouTube downloader API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "fluent-ffmpeg": "^2.1.2",
+    "ffmpeg-static": "^4.2.7",
+    "ytdl-core": "^4.9.1"
+  },
+  "author": "Your Name",
+  "license": "ISC"
+}
