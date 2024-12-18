@@ -74,8 +74,12 @@ app.get('/download', async (req, res) => {
             }).pipe(res);
         }
     } catch (err) {
-        console.error(err);
-        res.status(500).send('Error downloading video: ' + err.message);
+        if (err.code === 'ENOTFOUND') {
+            res.status(410).send('Video not found: The video has been deleted or is no longer accessible');
+        } else {
+            console.error(err);
+            res.status(500).send('Error downloading video: ' + err.message);
+        }
     }
 });
 
@@ -96,8 +100,12 @@ app.get('/info', async (req, res) => {
         const info = await ytdl.getInfo(parsedUrl.href);
         res.json(info.videoDetails);
     } catch (err) {
-        console.error(err);
-        res.status(500).send('Error retrieving video info: ' + err.message);
+        if (err.code === 'ENOTFOUND') {
+            res.status(410).send('Video not found: The video has been deleted or is no longer accessible');
+        } else {
+            console.error(err);
+            res.status(500).send('Error retrieving video info: ' + err.message);
+        }
     }
 });
 
