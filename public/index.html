@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Downloader API</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="bg-dark text-white text-center py-3 mb-4">
+        <h1>YouTube Downloader API</h1>
+        <nav>
+            <ul class="nav justify-content-center">
+                <li class="nav-item"><a class="nav-link text-white" href="#download">Download</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#docs">API Docs</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <section id="download" class="mb-5">
+            <h2 class="mb-4">Download Video</h2>
+            <form id="download-form" class="form">
+                <div class="form-group">
+                    <label for="url">YouTube URL:</label>
+                    <input type="url" class="form-control" id="url" name="url" required>
+                </div>
+                <div class="form-group">
+                    <label for="format">Format:</label>
+                    <select class="form-control" id="format" name="format">
+                        <option value="mp4">MP4</option>
+                        <option value="mp3">MP3</option>
+                        <option value="webm">WebM</option>
+                        <option value="flac">FLAC</option>
+                        <option value="avi">AVI</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quality">Quality:</label>
+                    <select class="form-control" id="quality" name="quality">
+                        <option value="highest">Highest</option>
+                        <option value="highestaudio">Highest Audio</option>
+                        <option value="highestvideo">Highest Video</option>
+                        <option value="lowest">Lowest</option>
+                        <option value="lowestaudio">Lowest Audio</option>
+                        <option value="lowestvideo">Lowest Video</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Download</button>
+            </form>
+        </section>
+        <section id="docs">
+            <h2 class="mb-4">API Documentation</h2>
+            <p>Use the following endpoints to interact with the YouTube Downloader API:</p>
+            <ul>
+                <li><strong>Download Video:</strong> <code>/download?url=&lt;YouTube-video-url&gt;&format=&lt;format&gt;&quality=&lt;quality&gt;</code></li>
+                <li><strong>Get Video Information:</strong> <code>/info?url=&lt;YouTube-video-url&gt;</code></li>
+            </ul>
+        </section>
+    </main>
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 YouTube Downloader API</p>
+    </footer>
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
